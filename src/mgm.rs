@@ -92,7 +92,7 @@ pub enum MgmType {
 
 /// The algorithm used for the MGM key.
 pub trait MgmKeyAlgorithm:
-    BlockCipher + BlockDecrypt + BlockEncrypt + KeyInit + private::Seal
+    BlockCipher + BlockDecrypt + BlockEncrypt + Clone + KeyInit + private::Seal
 {
     /// The KeySized used for this algorithm
     const KEY_SIZE: u8;
