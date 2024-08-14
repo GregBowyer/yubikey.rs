@@ -373,7 +373,11 @@ impl YubiKey {
 
         let mut data = Vec::with_capacity(4 + challenge_len + 2 + challenge_len);
         data.push(TAG_DYN_AUTH);
-        data.push((2 + challenge_len + 2 + challenge_len).try_into().expect("value fits in u8"));
+        data.push(
+            (2 + challenge_len + 2 + challenge_len)
+                .try_into()
+                .expect("value fits in u8"),
+        );
         data.push(0x80);
         data.push(challenge_len as u8);
         data.extend_from_slice(&card_challenge);

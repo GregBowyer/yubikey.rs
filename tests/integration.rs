@@ -15,8 +15,7 @@ use yubikey::{
     certificate::yubikey_signer,
     certificate::Certificate,
     piv::{self, AlgorithmId, Key, ManagementAlgorithmId, ManagementSlotId, RetiredSlotId, SlotId},
-    Error, MgmKey3Des, MgmKeyAes192, PinPolicy, Serial, TouchPolicy,
-    YubiKey,
+    Error, MgmKey3Des, MgmKeyAes192, PinPolicy, Serial, TouchPolicy, YubiKey,
 };
 #[cfg(feature = "untested")]
 use yubikey::{MgmKey, MgmKeyAlgorithm};
@@ -115,7 +114,7 @@ fn get_mgm_key_meta(yubikey: &mut YubiKey) -> piv::SlotMetadata {
 }
 
 /// Given a default YubiKey, authenticate with the default management key.
-/// 
+///
 /// This is slightly complicated by newer firmwares using AES192 as the MGM default key,
 /// over 3DES.
 fn auth_default_mgm(yubikey: &mut YubiKey) {
@@ -350,8 +349,7 @@ fn test_read_metadata() {
 #[ignore]
 fn test_parse_cert_from_der() {
     let bob_der = std::fs::read("tests/assets/Bob.der").expect(".der file not found");
-    let cert =
-        Certificate::from_bytes(bob_der).expect("Failed to parse valid certificate");
+    let cert = Certificate::from_bytes(bob_der).expect("Failed to parse valid certificate");
     assert_eq!(
         cert.subject(),
         "CN=Bob",
